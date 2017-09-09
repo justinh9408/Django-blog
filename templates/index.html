@@ -1,0 +1,197 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JH's Blog</title>
+    <style type="text/css">
+
+        body {margin-top:0px;
+                background-image:url({%static 'image/keyborad.jpg'%});
+                margin-bottom:0px;
+                height:1300px;
+                }
+        #header {background-color:black;
+                 position:relative;
+                 margin-bottom:0px;
+                 width:1100px;
+                 height:100px;
+                 }
+        #container {
+
+                    width:1280px;
+                    height:80px;}
+        #logo {
+               width:600px;
+               height:70px;
+                background-image:url('{%static "image/logo2.png"%}');
+               float:left;
+               background-size: 110% 120%;
+               opacity:2;
+    background-repeat: no-repeat;
+               }
+          .logo {   width:400px;
+               height:150px;
+               background-repeat:no-repeat;
+
+                background-image:url('{%static "image/logo2.png"%}');
+                 }
+         #navArea {width:600px;
+                    height:80px;
+                    float:right;
+                   }
+          #nav {color:white;
+                padding:20px;
+                float:right;
+                list-style:none;
+                margin-top:0px;
+                margin-right:130px;
+                }
+            #nav li {
+                margin-left:10px;
+
+                 padding:20px;
+                 float:left;
+
+                 }
+           #nav a {color:white}
+            #nav li:hover {color:blue;
+                           }
+          .banner { height:190px;
+                     width:1100px;
+                      margin-top:8px;
+                      margin-right:0px;
+                      background-image:url({%static "image/banner.jpg"%});
+                      background-position: 60% 40%;
+                      background-repeat:no-repeat;
+                      opacity:0.88;
+                    }
+           .banner:hover {background-position: 90% 40%;}
+         #mainpage {
+                    margin-top:0px;
+                    width:1100px;
+                    padding:10px;
+                    height:1500px;
+                    }
+         #leftcontent {float:left;
+                       color:white;
+                       margin-right:100px;}
+         #leftcontent ul a{
+                            list-style-type:none;
+                            text-decoration:none;
+                            color:white;
+                            }
+         #leftcontent ul li {padding:20px;list-style-type:none;}
+
+         #leftcontent ul li:hover {color:blue;}
+
+         #midcontent {float:left;
+                    width:800px;
+                    height:1500px;
+                    padding:1px;
+                    margin:8px;
+                    overflow:scroll;}
+             #hidescroll {float:left;
+                        width:780px;
+                       height:1490px;
+                       overflow:hidden;
+                       padding:1px}
+         #rightcontent {float:left;
+                        color:white;
+
+                        margin-left:90px;}
+         #footer {width:auto;
+                    height:240px;
+                    margin-bottom:0px;
+                    background-color:black;}
+         #footcontent {
+                padding:40px;
+                width:320px;
+                height:140px;
+                color:white
+                }
+           h3 {height:20px; margin-bottom:0px; color:blue}
+           .wrap {width:800px;}
+          .article {width:650px; height:180px;background-image:url({%static 'image/backimg.png'%}); opacity:0.6;padding:50px; margin-top:10px;
+                    text-align:left;}
+          .article:hover {opacity:1; color:blue}
+          .artlink {text-decoration:none;
+                     color:white;}
+         .left {width:100px;
+                height:90px;
+
+                float:left}
+
+    </style>
+</head>
+<body>
+    <div id="header" align="center">
+
+        <div id="container" align="center">
+            <a href="/"> <div id="logo"> </div></a>
+            <div id="navArea">
+                <ul id="nav">
+                    <a href="#footer"><li>about</li></a>
+                    <a href="#footer"><li>contact</li></a>
+                    <a href="#"><li>links</li></a>
+                    <a href="#"><li>ad</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="banner"></div>
+    <div id="mainpage" align="center">
+
+        <div id="leftcontent" align="center">
+            <ul>
+                <h3><a href="/artlist/"><li>All Article</li></a>
+                <a href="/taglist/"> <li>Article By Tag</li></a>
+                    <a href="/"><li>Homepage</li></a></h3>
+            </ul>
+        </div>
+        <div id="hidescroll">
+        <div id="midcontent">
+            <div class="wrap">
+
+                    {%for i in art%}
+                    <a class="artlink" href="/artid={{i.id}}">
+                        <div class="article">
+                    <h3>{{i}}</h3><br>
+                    <span style="color:pink"> Posted Date:{{i.date}}<br>
+                        Tag:  {{i.tag}}<br><br></span>
+                        {{i.content|slice:':150'}}...<br>
+                    </div></a>
+                    {% endfor %}
+
+            </div>
+        </div>
+        </div>
+        <div id="rightcontent">
+
+        </div>
+    </div>
+    <div id="footer" align="center" >
+        <div class="footleft" style="width:400;float:left;height:500;color:white">
+            <ul style="text-align:left; line-height:25px;list-style-type:none;padding:20px">
+                <span style="color:pink;font-size:25px"> <li>About :</li></span>
+                <li>The website was setup with Django.</li>
+                <li>It is a personal bolg.</li>
+                <li>It was built in Aug 2017.</li>
+                <span style="color:pink;font-size:25px"> <li>Contact :</li></span>
+
+                <span style="line-height:30px"><li>Email: justinh9408@gmail.com</li></span>
+            </ul>
+
+        </div>
+        <div id="footcontent" align="center">
+            <div class="logo"></div>
+        </div>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+
+</body>
+</html>
